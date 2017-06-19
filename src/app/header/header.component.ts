@@ -1,10 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {ShoppingComponent} from './shopping/shopping.component';
-import { NgModule } from '@angular/core';
-@NgModule({
-	declarations:[ShoppingComponent],
-		
-})
+import { Component, OnInit ,EventEmitter,Output} from '@angular/core';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -12,10 +6,14 @@ import { NgModule } from '@angular/core';
 })
 
 export class HeaderComponent implements OnInit {
-
+  @Output() showthis = new EventEmitter<{type:string}>();
   constructor() { }
 
   ngOnInit() {
+  }
+
+  sendval(val:string){
+    	this.showthis.emit({type:val});
   }
 
 }

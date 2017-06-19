@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  val="recipe";
+  check(serverData:{type:string}){
+  	this.val=serverData.type;
+  }
 }
