@@ -1,5 +1,6 @@
-import { Component, OnInit ,ElementRef,ViewChild,EventEmitter,Output } from '@angular/core';
+import { Component, OnInit ,ElementRef,ViewChild} from '@angular/core';
 import {Ingredient} from '../../shared/ingredient.model';
+import {ShoppingService} from '../shopping-service.service';
 @Component({
   selector: 'app-shopping-list-edit',
   templateUrl: './shopping-list-edit.component.html',
@@ -8,8 +9,7 @@ import {Ingredient} from '../../shared/ingredient.model';
 export class ShoppingListEditComponent implements OnInit {
   @ViewChild('nameInput') nameInputRef:ElementRef;
   @ViewChild('amountInput') amountInputRef:ElementRef;
-  @Output() ingredientAdded = new EventEmitter<Ingredient>();
-  constructor() { }
+  constructor(private shoppingService:ShoppingService) { }
 
   ngOnInit() {
   }
@@ -17,7 +17,7 @@ export class ShoppingListEditComponent implements OnInit {
   {
   	const nameEl = this.nameInputRef.nativeElement.value;
   	const amountEl = this.amountInputRef.nativeElement.value;
-  	this.ingredientAdded.emit(new Ingredient(nameEl,amountEl));
+  	this.shoppingService.onAddIngredient(new Ingredient(nameEl,amountEl));
   }
   clearsub(){
   	console.log("hello");//this is my way of testing
