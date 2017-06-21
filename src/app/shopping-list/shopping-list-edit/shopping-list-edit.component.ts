@@ -20,6 +20,6 @@ export class ShoppingListEditComponent implements OnInit {
   	this.shoppingService.onAddIngredient(new Ingredient(nameEl,amountEl));
   }
   clearsub(){
-  	console.log("hello");//this is my way of testing
+  	this.shoppingService.onClearIngredient();
   }
 }

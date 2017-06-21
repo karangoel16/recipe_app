@@ -1,6 +1,4 @@
-import { Injectable } from '@angular/core';
 import {Ingredient} from '../shared/ingredient.model';
-@Injectable()
 export class ShoppingService {
   ingredients:Ingredient[]=[
   	new Ingredient("apples",5),
@@ -8,5 +6,12 @@ export class ShoppingService {
   constructor() { }
   onAddIngredient(ingredient:Ingredient){
   	this.ingredients.push(ingredient);
+  }
+  onAddIngredients(ingredient:Ingredient[]){
+  	this.ingredients.push(...ingredient);
+  }
+  onClearIngredient()
+  {
+  	this.ingredients.length=0;
   }
 }
