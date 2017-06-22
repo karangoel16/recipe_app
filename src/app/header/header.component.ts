@@ -1,4 +1,4 @@
-import { Component, OnInit ,EventEmitter,Output} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -6,14 +6,13 @@ import { Component, OnInit ,EventEmitter,Output} from '@angular/core';
 })
 
 export class HeaderComponent implements OnInit {
-  @Output() showthis = new EventEmitter<{type:string}>();
+ 
   constructor() { }
 
   ngOnInit() {
   }
 
   sendval(val:string){
-    	this.showthis.emit({type:val});
   }
 
 }

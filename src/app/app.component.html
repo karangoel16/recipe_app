@@ -1,13 +1,8 @@
-<app-header (showthis)="check($event)"></app-header>
+<app-header></app-header>
 <div class="container">
   <div class="row">
-    <div class="col-xs-12" *ngIf="val==='recipe' else shop">
-      <app-recipes></app-recipes>
+    <div class="col-xs-12">
+    	<router-outlet></router-outlet>
     </div>
   </div>
 </div>
-<ng-template #shop>
-    <div class="col-xs-12">
-      <app-shopping-list></app-shopping-list>
-    </div>
-</ng-template>
