@@ -1,0 +1,35 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <label for="name">
+        <input id="name" type="text" class="form-control" formControlName="name" placeholder="name">
+      </label>
+      <label for="desc">
+        <input id="desc" type="text" class="form-control" formControlName="desc" placeholder="description">
+      </label>
+      <label for="imagesrc">
+        <input id="imagesrc" type="url" class="form-control" formControlName="imagesrc" placeholder="Image Link">
+      </label>
+      <div *ngFor="let ingredient of ingredients">
+        <label >
+          <input type="text" class="form-control" value="{{ingredient.name}}">
+        </label>
+        <label>
+          <input type="text" class="form-control" value="{{ingredient.amount}}">
+        </label>
+      </div>
+      <input class="form-control" type="button" (click)="onAddIngredient()" value="Add Ingredient">
+      <div class="row">
+        <div class="col-xs-4">
+          <button class="btn btn-primary" [disabled]="!myForm.valid" type="submit">Submit</button>
+        </div>
+        <div class="col-xs-4">
+          <button class="btn btn-danger" type="button">Clear</button>
+        </div>
+        <div class="col-xs-4">
+          <button class="btn btn-default" type="button">Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
