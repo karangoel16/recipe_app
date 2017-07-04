@@ -1,34 +1,47 @@
-<div class="row">
-	<div class="col-xs-12">
-		<img src="" alt="" class="img-responsive">
-	</div>
+<div class="col-md-7" *ngIf="id!=null; else rest">
+  <div class="row">
+    <div class="col-xs-12">
+      <img src="" alt="" class="img-responsive">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{{recipe.name}}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="btn-group" appManageDropdown>
+        <button type="button" class="btn btn-primary dropdown-toggle">Manage Recipe<span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a (click)="AddtoCart()">Add to shopping list</a></li>
+          <li><a>Add ingridients</a></li>
+          <li><a routerLink="/edit/">Edit List</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      {{recipe.desc}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="list-group">
+        <li *ngFor="let ingredient of recipe.ingredient" class="list-group-item">
+          {{ingredient.name}}({{ingredient.amount}})
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
-<div class="row">
-	<div class="col-xs-12">
-		<h1>{{recipe.name}}</h1>
-	</div>
-</div>
-<div class="row">
-	<div class="col-xs-12">
-		<div class="btn-group" appManageDropdown>
-			<button type="button" class="btn btn-primary dropdown-toggle" >Manage Recipe<span class="caret" ></span></button>
-			<ul class="dropdown-menu">
-				<li><a (click)="AddtoCart()">Add to shopping list</a></li>
-				<li><a href="#">Add ingridients</a></li>
-				<li><a href="#">Edit List</a></li>
-			</ul>
-		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-xs-12">
-		{{recipe.desc}}
-	</div>
-</div>
-<div class="row">
-	<div class="col-xs-12">
-		<ul class="list-group">
-		<li *ngFor="let ingredient of recipe.ingredient" class="list-group-item">{{ingredient.name}}({{ingredient.amount}})</li>
-		</ul>
-	</div>
-</div>
+<ng-template #rest>
+  <div class="col-md-7">
+    <div class="col-xs-12">
+      <div class="jumbotron">
+        <p>No details found please click one item</p>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -18,6 +18,10 @@ export const RecipeRoutes = [{
   },
   {
     path: 'edit',
+    redirectTo: 'index', pathMatch: 'full'
+  },
+  {
+    path: 'edit/:id',
     component: RecipeEditComponent
   }
 ];
