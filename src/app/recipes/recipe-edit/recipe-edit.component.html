@@ -1,7 +1,23 @@
-<form>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
   <div class="row">
-    <div class="col-xs-12 col-md-8 col-xs-4-offset">
-      hello
+    <div class="col-xs-12 col-md-8 col-md-4-offset">
+      <label for="name">
+        <input type="text" class="form-control" id="name" formControlName="name">
+      </label>
+      <label for="desc">
+        <input type="text" id="desc" class="form-control" formControlName="desc">
+      </label>
+      <label for="imagesrc">
+        <input type="text" id="imagesrc" class="form-control" formControlName="imagesrc" [(ngModel)]="imagepath" value="imagepath">
+      </label>
+    </div>
+    <div *ngIf="imagepath!=null">
+      <img src="{{imagepath}}">
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-8 col-md-4-offset">
+        <button class="btn btn-success" type="submit">Submit</button>
+      </div>
     </div>
   </div>
 </form>
