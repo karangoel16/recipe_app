@@ -1,16 +1,22 @@
 <div class="row">
 	<div class="col-xs-12">
-		<form>
+		<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
 			<div class="row">
 				<div class="col-sm-5 form-group">
-					<label for="name">Name</label><input type="text" class="form-control" id="name" #nameInput>
+					<label for="name">
+            Name:<input type="text" class="form-control" id="name" formControlName="name">
+          </label>
 				</div>
-				<div class="col-sm-2 form-group"><label for="amount">Amount</label><input type="number" class="form-control" id="amount" #amountInput></div>
+				<div class="col-sm-2 form-group">
+          <label for="amount">
+            Amount:<input type="number" class="form-control" id="amount" formControlName="amount">
+          </label>
+        </div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
-					<button type="button" class="btn btn-success" (click)='onAddItem()'>Submit</button>
-					<button type="button" class="btn btn-danger">Delete</button>
+					<button type="button" class="btn btn-success" type="submit">{{editMode?'Update':'Submit'}}</button>
+					<button type="button" class="btn btn-danger" (click)="onDeleteItem()">Delete</button>
 					<button type="button" class="btn btn-primary" (click)="clearsub()">Clear</button>
 				</div>
 			</div>

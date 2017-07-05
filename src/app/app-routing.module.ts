@@ -15,6 +15,9 @@ const appRoutes: Routes = [{
 }, {
   path: 'shopping',
   component: ShoppingListComponent
+}, {
+  path: 'shopping/:id',
+  component: ShoppingListComponent
 }];
 
 @NgModule({

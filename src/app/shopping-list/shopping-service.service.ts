@@ -5,8 +5,16 @@ export class ShoppingService {
     new Ingredient('apples', 5),
     new Ingredient('tomato', 3)];
   @Output() ingredientChanged = new EventEmitter<Ingredient[]>();
+  @Output() editIngredient = new EventEmitter<number>();
 
   constructor() {
+  }
+
+  onEditIngredient(id: number, ingredient: Ingredient) {
+    if (id >= 0 && id < this.ingredients.length) {
+      this.ingredients[id] = ingredient;
+      this.ingredientChanged.emit(this.ingredients.slice());
+    }
   }
 
   onAddIngredient(ingredient: Ingredient) {
@@ -26,5 +34,17 @@ export class ShoppingService {
   onClearIngredient() {
     this.ingredients.length = 0;
     this.ingredientChanged.emit(this.ingredients.slice());
+  }
+
+  onGetid(ingredient: Ingredient) {
+    return this.ingredients.indexOf(ingredient);
+  }
+
+  onGetIngredientById(id: number) {
+    if (id < 0 || id >= this.ingredients.length) {
+      return null;
+    } else {
+      return this.ingredients[id];
+    }
   }
 }
