@@ -8,26 +8,20 @@
         <input id="desc" type="text" class="form-control" formControlName="desc" placeholder="description">
       </label>
       <label for="imagesrc">
-        <input id="imagesrc" type="url" class="form-control" formControlName="imagesrc" placeholder="Image Link">
+        <input id="imagesrc" type="url" class="form-control" formControlName="imagesrc" placeholder="Image Link" [(ngModel)]="imagesrc" value="imagesrc">
       </label>
-      <div *ngFor="let ingredient of ingredients">
-        <label >
-          <input type="text" class="form-control" value="{{ingredient.name}}">
-        </label>
-        <label>
-          <input type="text" class="form-control" value="{{ingredient.amount}}">
-        </label>
+      <div class="row" *ngIf="imagesrc!=null">
+        <img src="{{imagesrc}}">
       </div>
-      <input class="form-control" type="button" (click)="onAddIngredient()" value="Add Ingredient">
       <div class="row">
         <div class="col-xs-4">
           <button class="btn btn-primary" [disabled]="!myForm.valid" type="submit">Submit</button>
         </div>
         <div class="col-xs-4">
-          <button class="btn btn-danger" type="button">Clear</button>
+          <button class="btn btn-danger" type="button" (click)="onReset()">Clear</button>
         </div>
         <div class="col-xs-4">
-          <button class="btn btn-default" type="button">Back</button>
+          <button class="btn btn-default" type="button" (click)="onBack()" >Back</button>
         </div>
       </div>
     </div>

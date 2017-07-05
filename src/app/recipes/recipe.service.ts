@@ -11,6 +11,7 @@ export class RecipeService implements OnInit {
     new Ingredient('aples', 5),
     new Ingredient('tomato', 3)])];
   @Output() itemSelected = new EventEmitter<number>();
+  @Output() recipeChanged = new EventEmitter<any>();
 
   constructor(private shoppingService: ShoppingService, private router: Router) {
   }
@@ -22,11 +23,11 @@ export class RecipeService implements OnInit {
     return this.recipe.slice();
   }
 
-  getrecipeById(id:number)
-  {
+  getrecipeById(id: number) {
     //error handling needs to be done
     return this.recipe[id]; //to send recipe by value
   }
+
   onSelect(eventData: number) {
     this.itemSelected.emit(eventData);
   }
@@ -37,5 +38,10 @@ export class RecipeService implements OnInit {
 
   onEditRecipe() {
 
+  }
+
+  onAddRecipe(recipe: Recipe) {
+    this.recipe.push(recipe);
+    this.recipeChanged.emit('test');
   }
 }

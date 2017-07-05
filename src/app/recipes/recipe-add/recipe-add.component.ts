@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Recipe} from '../recipes.model';
-import {FormGroup, FormControl, Validators, FormArray, FormBuilder} from '@angular/forms';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Ingredient} from '../../shared/ingredient.model';
+import {Router} from '@angular/router';
+import {RecipeService} from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-add',
@@ -11,8 +13,9 @@ export class RecipeAddComponent implements OnInit {
   recipe: Recipe;
   ingredients: Ingredient[] = [];
   myForm: FormGroup;
+  imagesrc: string;
 
-  constructor(private formbuilder: FormBuilder) {
+  constructor(private router: Router, private recipeService: RecipeService) {
   }
 
   ngOnInit() {
@@ -20,17 +23,20 @@ export class RecipeAddComponent implements OnInit {
       name: new FormControl(null, Validators.required),
       imagesrc: new FormControl(null, Validators.required),
       desc: new FormControl(null, [Validators.minLength(100), Validators.required]),
-      ingredients: this.formbuilder.array([])
     });
-    const arraycontrol = this.myForm.controls['Ingredients'];
 
   }
 
   onSubmit() {
-    console.log('we are here');
+    this.recipeService.onAddRecipe(new Recipe(this.myForm.value.name, this.myForm.value.desc, this.myForm.value.imagesrc, this.ingredients));
+    this.router.navigate(['/recipe']);
   }
 
-  onAddIngredient() {
-    this.ingredients.push(new Ingredient("",0));
+  onReset() {
+    this.myForm.reset();
+  }
+
+  onBack() {
+    this.router.navigate(['/recipe']);
   }
 }
