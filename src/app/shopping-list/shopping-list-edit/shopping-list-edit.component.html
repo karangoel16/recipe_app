@@ -16,7 +16,7 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<button type="button" class="btn btn-success" type="submit">{{editMode?'Update':'Submit'}}</button>
-					<button type="button" class="btn btn-danger" (click)="onDeleteItem()">Delete</button>
+					<button type="button" class="btn btn-danger" (click)="onDeleteItem()" [disabled]="!editMode">Delete</button>
 					<button type="button" class="btn btn-primary" (click)="clearsub()">Clear</button>
 				</div>
 			</div>

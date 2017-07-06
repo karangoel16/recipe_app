@@ -8,7 +8,7 @@
   <div class="col-xs-12">
     <ul class="list-group">
       <a class="list-group-item" style="cursor:pointer;" *ngFor="let ingredient of ingredients;let i=index"
-         routerLink="/shopping/{{i}}">{{ingredient.name}}({{ingredient.amount}}) </a>
+         routerLink="/shopping/{{i}}">{{ingredient.name|uppercase}}({{ingredient.amount}}) </a>
     </ul>
   </div>
 </div>

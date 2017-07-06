@@ -8,16 +8,32 @@
         <input type="text" id="desc" class="form-control" formControlName="desc">
       </label>
       <label for="imagesrc">
-        <input type="text" id="imagesrc" class="form-control" formControlName="imagesrc" [(ngModel)]="imagepath" value="imagepath">
+        <input type="text" id="imagesrc" class="form-control" formControlName="imagesrc" [(ngModel)]="imagepath"
+               value="imagepath">
       </label>
     </div>
-    <div *ngIf="imagepath!=null">
-      <img src="{{imagepath}}">
     </div>
+    <div *ngIf="imagepath!=null">
+      <img src="{{imagepath}}" class="img-responsive">
+    </div>
+    <div class="row" formArrayName="ingredients">
+      <div class="col-xs-8">
+        <div class="row" *ngFor="let ingCtrl of myForm.get('ingredients').controls;let i=index" [formGroupName]="i">
+          <div class="col-xs-8">
+            <input type="text" class="form-control" formControlName="name">
+          </div>
+          <div class="col-xs-2">
+            <input type="number" class="form-control" formControlName="amount">
+          </div>
+          <button class="btn btn-danger" type="button" (click)="onDelete(i)">X</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-default" type="button" (click)="onAddIngredient()">Add Ingredient</button>
     <div class="row">
       <div class="col-xs-12 col-md-8 col-md-4-offset">
         <button class="btn btn-success" type="submit">Submit</button>
+        <button class="btn btn-primary" type="button" (click)="onBack()">Back</button>
       </div>
     </div>
-  </div>
 </form>

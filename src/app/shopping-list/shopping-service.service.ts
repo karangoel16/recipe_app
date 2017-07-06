@@ -47,4 +47,11 @@ export class ShoppingService {
       return this.ingredients[id];
     }
   }
+
+  onDeleteIngredient(id: number) {
+    if (id >= 0 && id < this.ingredients.length) {
+      this.ingredients.splice(id, 1);
+      this.ingredientChanged.emit(this.ingredients.slice());
+    }
+  }
 }

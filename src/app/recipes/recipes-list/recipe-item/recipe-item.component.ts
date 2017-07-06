@@ -20,4 +20,8 @@ export class RecipeItemComponent implements OnInit {
   sendval() {
     this.recipeService.onSelect(this.id);
   }
+
+  onDelete(){
+    this.recipeService.onDelete(this.id);
+  }
 }

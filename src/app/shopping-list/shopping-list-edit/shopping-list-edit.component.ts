@@ -52,10 +52,12 @@ export class ShoppingListEditComponent implements OnInit {
 
 
   clearsub() {
-    this.shoppingService.onClearIngredient();
+    this.myForm.reset();
+    this.route.navigate(['../', 'shopping']);
   }
 
   onDeleteItem() {
-    console.log('8');
+    this.shoppingService.onDeleteIngredient(this.id);
+    this.route.navigate(['../', 'shopping']);
   }
 }
