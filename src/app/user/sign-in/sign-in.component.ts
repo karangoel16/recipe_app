@@ -20,6 +20,7 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.myForm.value);
+    this.userService.onLogin(this.myForm.value.email, this.myForm.value.password);
   }
+
 }

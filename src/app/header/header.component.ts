@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Response} from '@angular/http';
 import {DataStorageService} from '../data-storage.service';
 import {RecipeService} from '../recipes/recipe.service';
+import {UserService} from '../user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +12,13 @@ import {RecipeService} from '../recipes/recipe.service';
 
 export class HeaderComponent implements OnInit {
 
-  constructor(private dataService: DataStorageService, private recipeService: RecipeService) {
+  token: string;
+
+  constructor(private dataService: DataStorageService, private recipeService: RecipeService, private userService: UserService) {
   }
 
   ngOnInit() {
+    this.token = this.userService.token;
   }
 
   sendval(val: string) {
@@ -33,4 +37,5 @@ export class HeaderComponent implements OnInit {
       this.recipeService.setrecipe(response.json());
     });
   }
+
 }
