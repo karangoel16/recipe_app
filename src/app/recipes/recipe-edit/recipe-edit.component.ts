@@ -55,7 +55,7 @@ export class RecipeEditComponent implements OnInit {
   }
 
   onSubmit() {
-    const ingredient =new  Array<Ingredient>();
+    const ingredient =[];
     for (let arrCtrl of this.recipeIngredients.controls) {
       ingredient.push(new Ingredient(arrCtrl.value.name, arrCtrl.value.amount));
     }

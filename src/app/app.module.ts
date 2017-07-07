@@ -15,6 +15,8 @@ import {RecipeAddComponent} from './recipes/recipe-add/recipe-add.component';
 import {RecipeEditComponent} from './recipes/recipe-edit/recipe-edit.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import {SignInComponent} from './user/sign-in/sign-in.component';
+import {SignUpComponent} from './user/signup/signup.component';
 
 
 
@@ -30,6 +32,8 @@ import {HttpModule} from '@angular/http';
     RecipeEditComponent,
     ShoppingListComponent,
     ShoppingListEditComponent,
+    SignInComponent,
+    SignUpComponent,
     ManageDropdownDirective
   ],
   imports: [

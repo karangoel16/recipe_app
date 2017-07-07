@@ -1,0 +1,33 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <label for="name">Name
+        <input type="text" class="form-control" id="name" formControlName="name">
+        <div class="form-text error" *ngIf="myForm.controls.name.touched">
+          <div *ngIf="myForm.controls.name.hasError('required')">Name is required</div>
+        </div>
+      </label>
+      <label for="email">Email
+        <input type="email" class="form-control" id="email" formControlName="email">
+        <div *ngIf="myForm.controls.email.touched" class="form-text error">
+          <div *ngIf="myForm.controls.email.hasError('required')">Email is required</div>
+          <div *ngIf="myForm.controls.email.hasError('email')">Email is not valid</div>
+        </div>
+      </label>
+      <label for="password">Password
+        <input type="password" id="password" class="form-control" formControlName="password">
+        <div class="form-control error" *ngIf="myForm.controls.password.touched">
+          <div *ngIf="myForm.controls.password.hasError('required')">Password is required</div>
+        </div>
+      </label>
+      <label for="cpassword">Confirm Password
+        <input type="password" class="form-control" id="cpassword" formControlName="cpassword">
+        <div class="form-text error" *ngIf="myForm.controls.cpassword.touched">
+          <div *ngIf="myForm.controls.cpassword.hasError('required')">Confirm Password is required</div>
+          <div *ngIf="myForm.controls.cpassword.hasError('mismatchedPasswords')">Mismatched Password</div>
+        </div>
+      </label>
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+  </div>
+</form>
