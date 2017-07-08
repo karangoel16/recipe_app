@@ -8,18 +8,21 @@
         <li routerLinkActive="active"><a routerLink="/recipe">Recipe</a></li>
         <li routerLinkActive="active"><a routerLink="/shopping">Shopping</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink="/signup" *ngIf="!userService.isAuthenticate()"> Register</a></li>
-        <li><a routerLink="/signin" *ngIf="!userService.isAuthenticate()">Login</a></li>
-        <li class="dropdown" *ngIf="userService.isAuthenticate()" appManageDropdown>
-          <a  class="dropdown-toggle" role="button">Manage
-            <span class="caret glyphicon glyphicon-dropdown"></span></a>
-          <ul class="dropdown-menu">
-            <li><a style="cursor: pointer;" (click)="onSave()">Save Data</a></li>
-            <li><a style="cursor: pointer;" (click)="onLoad()">Fetch Data</a></li>
-          </ul>
-        </li>
+      <ul class="nav navbar-nav navbar-right" *ngIf="!userService.isAuthenticate()">
+        <li><a routerLink="/signup" > Register</a></li>
+        <li><a routerLink="/signin" >Login</a></li>
       </ul>
+        <ul class="nav navbar-nav navbar-right" *ngIf="userService.isAuthenticate()">
+          <li><a (click)="onLogout()" style="cursor: pointer;">Logout</a> </li>
+          <li class="dropdown" appManageDropdown>
+            <a  class="dropdown-toggle" role="button">Manage
+              <span class="caret glyphicon glyphicon-dropdown"></span></a>
+            <ul class="dropdown-menu">
+              <li><a style="cursor: pointer;" (click)="onSave()">Save Data</a></li>
+              <li><a style="cursor: pointer;" (click)="onLoad()">Fetch Data</a></li>
+            </ul>
+          </li>
+        </ul>
     </div>
   </div>
 </nav>

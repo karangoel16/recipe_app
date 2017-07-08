@@ -16,7 +16,6 @@ export class UserService implements OnInit {
   }
 
   onLogin(email: string, password: string) {
-    console.log('hello');
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(response => {
         firebase.auth().currentUser.getIdToken()
@@ -55,6 +54,7 @@ export class UserService implements OnInit {
   }
 
   onLogout() {
+    this.token=null;
     firebase.auth().signOut();
   }
 }

@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
 
   token: string;
 
-  constructor(private dataService: DataStorageService, private recipeService: RecipeService, private userService: UserService) {
+  constructor(private dataService: DataStorageService, private recipeService: RecipeService, public userService: UserService) {
   }
 
   ngOnInit() {
@@ -38,4 +38,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  onLogout(){
+    this.userService.onLogout();
+  }
 }

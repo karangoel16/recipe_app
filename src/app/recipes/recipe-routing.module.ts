@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router';
 import {RecipeAddComponent} from './recipe-add/recipe-add.component';
 import {RecipesComponent} from './recipes.component';
 import {RecipeEditComponent} from './recipe-edit/recipe-edit.component';
+import {UserGuardService} from '../user/user-guard.service';
 export const RecipeRoutes = [{
   path: '',
   redirectTo: 'index', pathMatch: 'full'
@@ -14,7 +15,8 @@ export const RecipeRoutes = [{
   },
   {
     path: 'newRecipe',
-    component: RecipeAddComponent
+    component: RecipeAddComponent,
+    canActivate: [UserGuardService]
   },
   {
     path: 'edit',
@@ -22,6 +24,7 @@ export const RecipeRoutes = [{
   },
   {
     path: 'edit/:id',
-    component: RecipeEditComponent
+    component: RecipeEditComponent,
+    canActivate: [UserGuardService]
   }
 ];

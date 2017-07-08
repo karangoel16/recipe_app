@@ -17,7 +17,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {SignInComponent} from './user/sign-in/sign-in.component';
 import {SignUpComponent} from './user/signup/signup.component';
-
+import {ShoppingService} from './shopping-list/shopping-service.service';
+import {RecipeService} from './recipes/recipe.service';
+import {DataStorageService} from './data-storage.service';
+import {UserService} from './user/user.service';
+import {UserGuardService} from './user/user-guard.service';
 
 
 @NgModule({
@@ -36,6 +40,7 @@ import {SignUpComponent} from './user/signup/signup.component';
     SignUpComponent,
     ManageDropdownDirective
   ],
+  providers: [ShoppingService, RecipeService, DataStorageService, UserService, UserGuardService],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -43,7 +48,6 @@ import {SignUpComponent} from './user/signup/signup.component';
     ReactiveFormsModule,
     HttpModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
