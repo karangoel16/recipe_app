@@ -14,7 +14,7 @@ export class DataStorageService {
 
   onLoadData() {
     const token = this.userService.getToken();
-    console.log(token);
     return this.http.get('https://shopping-app-2b2cc.firebaseio.com/recipe.json?auth=' + token, this.recipeService.getrecipe());
   }
+  
 }
